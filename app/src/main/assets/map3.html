@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>전기차 충전소 WMS 서비스</title>
+    <script src="https://cdn.jsdelivr.net/npm/openlayers@latest"></script>
+</head>
+<body>
+    <div id="map" style="width: 100%; height: 1000px;"></div>
+
+    <script type="text/javascript">
+        var APIKEY = 'LADF3JBO-LADF-LADF-LADF-LADF3JBOFY'; // 여기에 본인의 API 키를 입력하세요
+
+        var param = {
+            name: '전기차충전소',
+            serverUrl: 'http://www.safemap.go.kr/openApiService/wms/getLayerData.do',
+            layername: 'A2SM_CHARGINGSTATION',
+            styles: 'A2SM_CHARGINGSTATION'
+        };
+
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                new ol.layer.Tile({
+                    source: new ol.source.TileWMS({
+                        url: param.serverUrl,
+                        params: {
+                            'LAYERS': param.layername,
+                            'STYLES': param.styles,
+                            'FORMAT': 'image/png',
+                            'TRANSPARENT': true,
+                            'APIKEY': APIKEY
+                        }
+                    })
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([128.488789, 35.855923]),
+                zoom: 15
+            })
+        });
+
+        // 범례 호출 예제
+        function fetchLegend() {
+            var legendUrl = 'http://www.safemap.go.kr/legend/legendApiXml.do?apikey=' + APIKEY + '&layer=' + param.layername + '&style=' + param.styles;
+
+            // 이 URL을 사용하여 범례 데이터를 가져와 처리하는 코드를 작성하세요.
+            // 범례 데이터는 XML 형식으로 제공됩니다.
+            console.log("범례 URL:", legendUrl);
+        }
+
+        // 범례 호출 함수 실행 (필요에 따라 호출)
+        fetchLegend();
+    </script>
+</body>
+</html>

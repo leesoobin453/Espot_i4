@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WMS Map</title>
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+    <script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+</head>
+<body>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+        var map = new ol.Map({
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                new ol.layer.Image({
+                    source: new ol.source.ImageWMS({
+                        url: 'http://www.safemap.go.kr/openApiService/wms/getLayerData.do?apikey=[LADF3JBO-LADF-LADF-LADF-LADF3JBOFY]',
+                        params: { 'LAYERS': 'A2SM_CHARGINGSTATION', 'STYLES': 'A2SM_CHARGINGSTATION', 'FORMAT': 'image/png' },
+                        ratio: 1,
+                        serverType: 'geoserver'
+                    })
+                })
+            ],
+            target: 'map',
+            controls: ol.control.defaults({
+                attributionOptions: ({
+                    collapsible: false
+                })
+            }),
+            view: new ol.View({
+                center: ol.proj.fromLonLat([127.024612, 37.532600]), // 서울 중심 좌표
+                zoom: 10
+            })
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1000523145179",
+    "firebase_url": "https://i4-espot-default-rtdb.firebaseio.com",
+    "project_id": "i4-espot",
+    "storage_bucket": "i4-espot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000523145179:android:7f1b756f3e79e06a7111fe",
+        "android_client_info": {
+          "package_name": "com.example.espot_i4"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxv5QtwlskPufElfapIaxh6yJ3cOAx_rI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
